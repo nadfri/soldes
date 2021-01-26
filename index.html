@@ -4,45 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="NadfriJS" />
+    <meta name="theme-color" content="#ffd66b">
     <title>Calculateur de Remise</title>
+    <link rel='manifest' href='manifest.json'>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"
+        crossorigin="anonymous">
     <script src="script.js" defer></script>
 </head>
 
 <body>
     <header>
-        <img src="logo.png" alt="logo">
+        <img src="img/logo.png" alt="logo">
     </header>
-    <fieldset>
-        <legend>Articles</legend>
-        <ol id="ol">
-            <li>
-                <span class="spanPrice">
-                    <input id="input_price" type="number" class="price" placeholder="Prix">
-                    <span>€</span>
-                </span>
 
-                    <i id="minus" class="fas fa-minus-square"></i>
-                    <span id="spanPercent" class="spanPercent">10</span><span>%</span>
-                    <i id="plus" class="fas fa-plus-square"></i>
+    <div class="container">
+        <input id="price" type="number" placeholder="Prix..." autocomplete="off">
+        <div class="euro">€</div>
 
-                =<span id="result" class="result">100.58€</span>
-            </li>
-        </ol>
+        <hr>
+        <div id="result" class="result">0€</div>
+        <hr>
 
-        <div>
-            <button id="ajouter" class="ajouter">Ajouter un article</button>
+        <div class="percent_div">
+            <div id="minus" class="minus">-</div>
+            <div id="percent" class="percent">30</div><span class="pourcent_symb">%</span>
+            <div id="plus" class="plus">+</div>
         </div>
-    </fieldset>
-
-
-    <footer>
-        <hr>
-        <h2>Total</h2>
-        <div id="total" class="total">0€</div>
-        <hr>
-    </footer>
+    </div>
+    <div id="installBtn" class="installBtn">Clic ici pour l'installer 👍</div>
 </body>
 
 </html>

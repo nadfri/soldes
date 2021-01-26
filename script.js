@@ -1,23 +1,43 @@
 "use strict";
 
-input_price.oninput = () => result.textContent = percentCalcul(input_price.value, spanPercent.textContent) + "€";
+price.onfocus = () => price.value = "";
 
-
+price.oninput = () => {
+    result.textContent = percentCalcul(price.value, percent.textContent) + "€";
+    animationScale(result);
+}
 
 plus.onclick = () => {
-    let percent = parseInt(spanPercent.textContent)
-    if (percent < 95)
-        spanPercent.textContent = percent + 5;
-    result.textContent = percentCalcul(input_price.value, spanPercent.textContent) + "€"
+    percent.classList.add("slideUp");
+    setTimeout(() => percent.classList.replace("slideUp", "slideDown"), 200);
+    animationScale(result);
+    let percent_Int = parseInt(percent.textContent);
+    if (percent_Int < 95)
+        percent.textContent = percent_Int + 5;
+
+    setTimeout(() => {
+        percent.classList.remove("slideDown");
+    }, 300);
+
+    result.textContent = percentCalcul(price.value, percent.textContent) + "€";
 }
 
 minus.onclick = () => {
-    let percent = parseInt(spanPercent.textContent)
-    if (percent > 0)
-        spanPercent.textContent = percent - 5;
-    result.textContent = percentCalcul(input_price.value, spanPercent.textContent) + "€"
-}
+    percent.classList.add("slideDown");
+    setTimeout(() => percent.classList.replace("slideDown", "slideUp"), 200);
+    animationScale(result);
+    let percent_Int = parseInt(percent.textContent)
+    if (percent_Int > 0)
+        percent.textContent = percent_Int - 5;
 
+    setTimeout(() => {
+        percent.classList.remove("slideUp");
+
+    }, 300);
+
+
+    result.textContent = percentCalcul(price.value, percent.textContent) + "€";
+}
 
 function percentCalcul(price, percent) {
     percent = percent ? percent : 0;
@@ -25,65 +45,38 @@ function percentCalcul(price, percent) {
     return (price * (1 - percent / 100)).toFixed(2);
 }
 
-ajouter.onclick = () => {
-    const li = document.createElement("li");
-    const spanPrice = document.createElement("span");
-    spanPrice.className = "spanPrice";
-
-    const input = document.createElement("input");
-    input.type = "number";
-    input.className = "price";
-    input.placeholder = "Prix";
-
-    const spanEuro = document.createElement("span");
-    spanEuro.textContent = "€";
-
-    spanPrice.appendChild(input);
-    spanPrice.appendChild(spanEuro);
-
-    const plus = document.createElement("i");
-    plus.className = "fas fa-plus-square";
-
-    const minus = document.createElement("i");
-    minus.className = "fas fa-minus-square";
-
-    const spanPercent = document.createElement("span");
-    spanPercent.className = "spanPercent";
-    spanPercent.textContent = 10;
-
-    const spanSymbPercent = document.createElement("span");
-    spanSymbPercent.textContent = "%";
-
-    const spanResult = document.createElement("span");
-    spanResult.className = "result";
-    spanResult.textContent = "0€";
-
-    input.oninput = () => spanResult.textContent = percentCalcul(input.value, spanPercent.textContent) + "€";
-
-    plus.onclick = () => {
-        let percent = parseInt(spanPercent.textContent)
-        if (percent < 95)
-            spanPercent.textContent = percent + 5;
-        spanResult.textContent = percentCalcul(input.value, spanPercent.textContent) + "€"
-    };
-
-    minus.onclick = () => {
-        let percent = parseInt(spanPercent.textContent)
-        if (percent < 95)
-            spanPercent.textContent = percent + 5;
-        spanResult.textContent = percentCalcul(input.value, spanPercent.textContent) + "€"
-    };
-
-    li.appendChild(spanPrice);
-    li.appendChild(minus);
-    li.appendChild(spanPercent);
-    li.appendChild(spanSymbPercent);
-    li.appendChild(plus);
-    li.appendChild(spanResult);
-
-    ol.appendChild(li);
-
-
-
+function animationScale(div) {
+    div.classList.add("scale15");
+    setTimeout(() => { div.classList.remove("scale15") }, 200);
 }
 
+/******************Bouton d'Installation PWA******************/
+window.onbeforeinstallprompt = (event) => {
+    installBtn.classList.add("slide"); //affiche la banniere perso
+    event.preventDefault(); // annuler la banniere par defaut
+    
+    installBtn.onclick = () => {
+        installBtn.classList.remove("slide"); //faire disparaitre le bouton
+        setTimeout(() => installBtn.style.display = "none", 500);
+        event.prompt(); //permettre l'installation
+    };
+};
+
+/******************Service Worker ******************/
+//Register service worker to control making site work offline
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('sw.js')
+            .then(registration => {
+                console.log(
+                    `Service Worker enregistré ! Ressource: ${registration.scope}`
+                );
+            })
+            .catch(err => {
+                console.log(
+                    `Echec de l'enregistrement du Service Worker: ${err}`
+                );
+            });
+    });
+}
