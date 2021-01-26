@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Remise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" alt="logo">
+    </header>
+    <fieldset>
+        <legend>Articles</legend>
+        <ol id="ol">
+            <li>
+                <span class="spanPrice">
+                    <input id="input_price" type="number" class="price" placeholder="Prix">
+                    <span>€</span>
+                </span>
+
+                    <i id="minus" class="fas fa-minus-square"></i>
+                    <span id="spanPercent" class="spanPercent">10</span><span>%</span>
+                    <i id="plus" class="fas fa-plus-square"></i>
+
+                =<span id="result" class="result">100.58€</span>
+            </li>
+        </ol>
+
+        <div>
+            <button id="ajouter" class="ajouter">Ajouter un article</button>
+        </div>
+    </fieldset>
+
+
+    <footer>
+        <hr>
+        <h2>Total</h2>
+        <div id="total" class="total">0€</div>
+        <hr>
+    </footer>
+</body>
+
+</html>

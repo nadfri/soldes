@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    border: solid 1px red;
+    background-color: cadetblue;
+}
+
+header {
+    height: 10%;
+    text-align: center;
+}
+
+header img {
+    width: 38%;
+}
+
+fieldset {
+    border: 2px solid teal;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    counter-reset: my-awesome-counter;
+}
+
+li {
+    counter-increment: my-awesome-counter;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+li::before {
+    content: counter(my-awesome-counter) ")";
+    /*permet de modifier le separateur */
+    color: red;
+}
+
+input {
+    height: 2rem;
+    border: none;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: transparent;
+}
+
+.spanPrice{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ededed;
+    border-radius: 5px;
+}
+
+.price {
+width: 90%;
+}
+
+.result {
+    font-size: 1.5rem;
+    border: solid 1px black;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(95, 95, 95, 0.75), rgba(0, 0, 0, 0));
+}
+
+.total {
+    text-align: center;
+    font-size: 3rem;
+}
+
+/*Button Fas*/
+
+.fas {
+    font-size: 2rem;
+}
+
+.fa-plus-square {
+    color: rgb(49, 206, 62);
+}
+
+.fa-minus-square {
+    color: chocolate;
+}
+
+.spanPercent {
+    display: inline-block;
+    border: solid 1px black;
+    text-align: center;
+    width: 3rem;
+    font-size: 1.5rem;
+}
