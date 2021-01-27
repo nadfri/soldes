@@ -54,7 +54,7 @@ function animationScale(div) {
 window.onbeforeinstallprompt = (event) => {
     installBtn.classList.add("slide"); //affiche la banniere perso
     event.preventDefault(); // annuler la banniere par defaut
-
+    
     installBtn.onclick = () => {
         installBtn.classList.remove("slide"); //faire disparaitre le bouton
         setTimeout(() => installBtn.style.display = "none", 500);
@@ -67,7 +67,7 @@ window.onbeforeinstallprompt = (event) => {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker
-            .register('sw.js')
+            .register('./sw.js')
             .then(registration => {
                 console.log(
                     `Service Worker enregistré ! Ressource: ${registration.scope}`

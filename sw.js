@@ -1,6 +1,6 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-console.log(`WorkBox of Solodes loaded🎉`);
+console.log(`WorkBox of Soldes loaded🎉`);
 
 const { registerRoute } = workbox.routing;
 const { StaleWhileRevalidate } = workbox.strategies;
