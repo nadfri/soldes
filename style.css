@@ -87,6 +87,7 @@ hr {
     width: 4rem;
     font-size: 3rem;
     background-color: #fd8c04;
+    cursor: pointer;
 }
 
 .plus {
